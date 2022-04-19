@@ -24,6 +24,10 @@ ja:
               name:
                 blank: を入力してください
                 taken: は既に存在しています
+          cart_food:
+            attributes:
+              quantity:
+                blank: を選択してください
       attributes:
        food:
         name: 商品名
@@ -33,6 +37,9 @@ ja:
         genre: ジャンル
        genre:
         name: 名前
+       cart_food:
+        quantity: 個数
+
 
 
 
