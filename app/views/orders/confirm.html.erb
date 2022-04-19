@@ -18,10 +18,10 @@
         <tbody>
             <% @cart_foods.each do |cart_food| %>
           <tr>
-            <td><%= image_tag cart_food.food.get_image(63,63) %><%= cart_food.food.name %></td>
-            <td><%= cart_food.food.add_tax_price.to_s(:delimited) %>円</td>
-            <td><%= cart_food.amount %></td>
-            <td><%= (cart_food.food.add_tax_price * cart_food.amount).to_s(:delimited) %>円</td>
+            <td><%= image_tag cart_food.food.image, size: '100x100' %><%= cart_food.food.name %></td>
+            <td><%= cart_food.food.with_tax_price.to_s(:delimited) %>円</td>
+            <td><%= cart_food.quantity %></td>
+            <td><%= (cart_food.food.with_tax_price * cart_food.quantity).to_s(:delimited) %>円</td>
           </tr>
           <% end %>
         </tbody>
@@ -36,11 +36,11 @@
         </tr>
         <tr>
           <th scope="row">商品合計</th>
-          <td><%= (@order.total_price).to_s(:delimited) %>円</td>
+          <td><%= @sum %>円</td>
         </tr>
         <tr>
           <th scope="row">請求金額</th>
-          <td><%= (@order.total_price + @order.shipping_price).to_s(:delimited) %>円</td>
+          <td><%= (@sum + @order.shipping_price).to_s(:delimited) %>円</td>
         </tr>
       </tbody>
     </table>

@@ -33,8 +33,19 @@ ja:
         genre: ジャンル
        genre:
         name: 名前
-
-
+    order:
+       status:
+        waiting_payment: "入金待ち"
+        payment_confirm: "入金確認"
+        making: "製作中"
+        before_sent: "発送準備中"
+        sent: "発送済み"
+    order_detail:
+       product_status:
+        not_make: "着手不可"
+        wait: "製作待ち"
+        making: "制作中"
+        done: "製作完了"
 
 
 
