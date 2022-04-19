@@ -2,31 +2,36 @@
 
 <table class="table table-borderless">
   <tr>
-    <td class="font-weight-bold">購入者</td>
-    <td></td>
+    <th class="font-weight-bold">購入者</th>
+    <th><%= @order.full_name %></th>
   </tr>
   <tr>
-    <td class="font-weight-bold">注文日</td>
-    <td></td>
+    <th class="font-weight-bold">注文日</th>
+    <th><%= @order.created_at.strftime("%Y/%m/%d") %></th>
   </tr>
   <tr>
-    <td class="font-weight-bold">配送先</td>
-    <td></td>
+    <th class="font-weight-bold">配送先</th>
+    <th><%= @user.address %></th>
   </tr>
   <tr>
-    <td class="font-weight-bold">支払方法</td>
-    <td></td>
+    <th class="font-weight-bold">支払方法</th>
+    <th><%= @user.payment_method %></th>
   </tr>
   <tr>
-    <td class="font-weight-bold">注文ステータス</td>
-    <td></td>
+    <th class="font-weight-bold">注文ステータス</th>
+    <% form_with :model: @order, url:admin_order_path(@order.id), local:true, method: :patch, class: "form-row" do |f| %>
+    <th>
+      <%= f.select :status. Order.status_i18n.invert, {prompt: false}, class: "form-control form-control-sm col-6" %>
+      <%= f.submit "更新", class"btn btn-success" %>
+    </th>
+    <% end %>
   </tr>
 </table>
 <div class="row-mt-5">
   <div class="col-md-9">
-    <table class="table table-light table-striped">
+    <table class="table">
       <thead>
-        <tr class="text-white bg-dark">
+        <tr>
           <th>商品名</th>
           <th>単価（税込）</th>
           <th>数量</th>
@@ -34,22 +39,36 @@
           <th>制作ステータス</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <% @order.order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.name %></td>
+          <td><%= order_detail.price %>円</td>
+          <td><%= order_detail.quantity %>円</td>
+          <td><%= (order_detail.price * order_detail.quantity).to_s(:delimited) %>円</td>
+          <% form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+          <td>
+            <%= f.select :product_status, Order.product_status_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          </td>
+          <% end %>
+        </tr>
+      </tbody>
     </table>
   </div>
   <div class="col-md-3 d-flex align-items-end">
-    <table class="">
+    <table class="table">
       <tr>
         <td class="font-weight-bold">商品合計</td>
-        <td></td>
+        <td><%= (@order.total_price).to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <td class="font-weight-bold">送料</td>
-        <td></td>
+        <td><%= @order.shipping_price %>円</td>
       </tr>
       <tr>
         <td class="font-weight-bold">請求金額合計</td>
-        <td></td>
+        <td><%= (@order.total_price + @order.shipping_price).to_s(:delimited) %>円</td>
       </tr>
     </table>
   </div>
