@@ -43,7 +43,7 @@
 
               <% if customer_signed_in? %>
                 <li>
-                  <%= link_to"カート",cart_foods_path %>
+                  <%= link_to"カート",public_cart_foods_path %>
 
 
                   </h3>
@@ -65,7 +65,7 @@
                 </li>
               <% end %>
                 <li>
-                  <%= link_to foods_path do %>
+                  <%= link_to public_foods_path do %>
                       商品一覧
                   <% end %>
                 </li>
