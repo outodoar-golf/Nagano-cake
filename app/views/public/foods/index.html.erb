@@ -13,7 +13,7 @@
       <div class="d-flex flex-wrap justify-content-start">
       <% @foods.each do |food| %>
         <div>
-         <%= link_to food_path(food.id) do %>
+         <%= link_to public_food_path(food.id) do %>
            <%= image_tag food.image,size: '150x150' %>
          <% end %>
            <p><%= food.name %></p>

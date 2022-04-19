@@ -1,6 +1,5 @@
+<%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
 
- <%= form_with model: @customer do |f| %>
-  
    <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
@@ -30,7 +29,14 @@
     <%= f.text_field :address %>
   </div>
 
-
   <div class="actions">
     <%= f.submit "edit" %>
-<% end %>    
+  <div class="actions">  
+  <%= form_with(model: @customer, local: true) do |form| %>
+  <%= form.radio_button :is_deleted, :true %>
+  <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+  <%= form.radio_button :is_deleted, :false %>
+  <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+  </div>
+  <% end %>
+<% end %>
