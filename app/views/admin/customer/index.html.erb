@@ -1,0 +1,5 @@
+<% @customer.each do |customer| %>
+<%= link_to customer.first_name,admin_customer_path(customer.id) %>
+<%= customer.email %>
+<%= customer.is_deleted %>
+<% end %>
