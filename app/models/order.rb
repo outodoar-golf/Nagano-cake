@@ -8,6 +8,6 @@ class Order < ApplicationRecord
   
 
   def add_tax_price
-    (self.tital_price * 1.08).round
+    (customer.total_price * 1.08).round
   end
 end

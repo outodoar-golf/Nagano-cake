@@ -20,7 +20,7 @@
           <tr>
             <td><%= image_tag cart_food.food.get_image(63,63) %><%= cart_food.food.name %></td>
             <td><%= cart_food.food.add_tax_price.to_s(:delimited) %>円</td>
-            <td><%= cart_food.amount %></td>
+            <td><%= cart_food.quantity %></td>
             <td><%= (cart_food.food.add_tax_price * cart_food.amount).to_s(:delimited) %>円</td>
           </tr>
           <% end %>
