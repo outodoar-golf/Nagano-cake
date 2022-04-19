@@ -9,7 +9,7 @@ class Public::CartFoodsController < ApplicationController
       redirect_to public_cart_foods_path, notice:'カート追加しました'
     else
       @genres = Genre.all
-      render template: "foods/show"
+      render "public/foods/show"
     end
   end
 
