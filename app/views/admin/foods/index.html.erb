@@ -1,0 +1,27 @@
+<!--管理者側-->
+<div class="container">
+  <h1>商品一覧</h1>
+  <%= link_to"font_awesome(商品投稿)",new_admin_food_path %>
+  <table class="table">
+    <tr>
+      <td>商品ID</td>
+      <td>商品名</td>
+      <td>税抜価格</td>
+      <td>ジャンル</td>
+      <td>ステータス</td>
+    </tr>
+    <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.id %></td>
+      <td>
+        <%= link_to admin_food_path(food.id) do %>
+          <%= food.name %>
+        <% end %>
+      </td>
+      <td><%= food.price %></td>
+      <td><%= food.genre.name %></td>
+      <td><%= food.get_status(food.sale_status) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

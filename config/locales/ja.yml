@@ -1,0 +1,41 @@
+ja:
+    enums:
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+    activerecord:
+      errors:
+        models:
+          food:
+            attributes:
+              genre:
+                required: を選択してください
+              name:
+                blank: が空白です。
+              explanation:
+                blank: が空白です。
+              price:
+                blank: を入力してください
+              image:
+                blank: を添付してください
+          genre:
+            attributes:
+              name:
+                blank: を入力してください
+                taken: は既に存在しています
+      attributes:
+       food:
+        name: 商品名
+        explanation: 説明
+        price: 金額
+        image: 画像
+        genre: ジャンル
+       genre:
+        name: 名前
+
+
+
+
+
+

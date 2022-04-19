@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="border border-dark px-3">
+        <p>ジャンル検索</p>
+          <% @genres.each do |genre| %>
+            <p><%= genre.name %></p>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-md-3 offset-md-1">
+      <%= image_tag @food.image,size: '200x200' %>
+    </div>
+    <div class="col">
+    <%= render "layouts/errors", obj: @cart_food %>
+      <%= @food.name %><br>
+      <%= @food.explanation %><br>
+      ¥<%= @food.price %>(税込)<br>
+      <%= form_with model: @cart_food do |f| %>
+        <%= f.select :quantity,*[1..10],include_blank: "個数選択" %>
+        <%= f.hidden_field :food_id,:value=>@food.id %>
+        <%= f.submit"カートに入れる",class:"bth btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

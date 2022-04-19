@@ -1,0 +1,36 @@
+
+ <%= form_with model: @customer do |f| %>
+  
+   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+   <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+   <div class="field">
+    <%= f.label :first_name_kana %><br />
+    <%= f.text_field :first_name_kana %>
+  </div>
+   <div class="field">
+    <%= f.label :last_name_kana %><br />
+    <%= f.text_field :last_name_kana %>
+  </div>
+   <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+   <div class="field">
+    <%= f.label :telephone_number %><br />
+    <%= f.text_field :telephone_number %>
+  </div>
+   <div class="field">
+    <%= f.label :adress %><br />
+    <%= f.text_field :adress %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "edit" %>
+<% end %>    

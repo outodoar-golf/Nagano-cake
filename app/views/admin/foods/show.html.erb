@@ -1,0 +1,11 @@
+<!--管理者側-->
+<div class="container">
+  <h1>商品詳細</h1>
+  <%= image_tag @food.image,size: '200x200' %>
+  <p>商品名　　　　　　　　<%= @food.name %></p>
+  <p>商品説明　　　　　　　<%= @food.explanation %></p>
+  <p>ジャンル　　　　　　　<%= @food.genre.name %></p>
+  <p>税込価格(税抜価格)　　<%= @food.with_tax_price %>(<%= @food.price %>)円</p>
+  <p><%= @food.get_status(@food.sale_status) %></p>
+  <%= link_to"編集する",edit_admin_food_path(@food.id) %>
+</div>

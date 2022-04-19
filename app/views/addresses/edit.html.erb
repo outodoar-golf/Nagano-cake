@@ -1,0 +1,9 @@
+<div class="container">
+ <h1>配送先編集</h1>
+ <%= form_with model: @address do |f| %>
+   郵便番号(ハイフンなし) 　<%= f.text_field :postal_code %><br>
+   住所　　　　　　　　　　<%= f.text_field :address %><br>
+   宛名　　　　　　　　　　<%= f.text_field :name %>
+   <%= f.submit"新規登録",class:"btn btn-success" %>
+ <% end %>
+</div>

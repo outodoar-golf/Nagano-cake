@@ -1,0 +1,16 @@
+<div class="container">
+  <div>
+    <h1>検索結果<span>(全<%= @record.count %>件)</span></h1>
+    <div class="d-flex flex-wrap justify-content-start">
+    <% @record.each do |food| %>
+        <div>
+         <%= link_to food_path(food.id) do %>
+           <%= image_tag food.image,size: '150x150' %>
+         <% end %>
+           <p><%= food.name %></p>
+           <p>¥<%= food.price %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
