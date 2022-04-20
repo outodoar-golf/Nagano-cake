@@ -1,6 +1,7 @@
-
+<div class="container">
+  <h1>会員情報編集</h1>
  <%= form_with model: @customer do |f| %>
-  
+
    <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
@@ -30,7 +31,9 @@
     <%= f.text_field :address %>
   </div>
 
-
   <div class="actions">
     <%= f.submit "edit" %>
-<% end %>    
+  </div>
+  <p><%= link_to "退会",unsubscribe_path, class: "btn btn-outline-danger" %></p>
+<% end %>
+</div>
