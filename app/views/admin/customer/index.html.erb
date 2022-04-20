@@ -7,14 +7,14 @@
       <td>メールアドレス</td>
       <td>ステータス</td>
     </tr>
+          <% @customer.each do |customer| %>
     <tr>
-      <td><% @customer.each do |customer| %>
-
+      <td>id</td>
       <td><%= link_to customer.first_name,admin_customer_path(customer.id) %></td>
       <td><%= customer.email %></td>
       <td><%= customer.is_deleted %></td>
           <% end %>
-      </td>
+
     </tr>
 
   </table>
