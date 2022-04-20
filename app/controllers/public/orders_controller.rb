@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Public::OrdersController < ApplicationController
 
   def new
     @new_order = Order.new
@@ -14,12 +14,13 @@ class OrdersController < ApplicationController
         @order.customer_id = current_customer.id
         @order.shipping_price = 800
         @cart_foods = current_customer.cart_foods
-        @order.total_price = 0
+
         if params[:order][:address_option]== "0"
           @sum = 0
           current_customer.cart_foods.each do |item|
-          @sum += item.subtotal
+            @sum  += item.subtotal
           end
+          @order.total_price = @sum + 800
           @order.postal_code = current_customer.postal_code
           @order.address = current_customer.address
           @order.name = current_customer.last_name + current_customer.first_name
@@ -35,10 +36,10 @@ class OrdersController < ApplicationController
 
 
   def create
-     order = Order.new(order_params)
-     order.customer_id = current_customer.id
-     order.save
-     current_customer.cart_foods.each do |cart_food|
+      order = Order.new(order_params)
+      order.customer_id = current_customer.id
+      order.save
+      current_customer.cart_foods.each do |cart_food|
        order_detail = OrderDetail.new
        order_detail.food_id = cart_food.food_id
        order_detail.quantity = cart_food.quantity
@@ -47,12 +48,12 @@ class OrdersController < ApplicationController
        order_detail.product_status = 0
        order_detail.save
       end
-       redirect_to order_complete_path(order.id)
+       redirect_to public_order_complete_path(order.id)
   end
 
 
   def index
-     @orders = current_customer.orders
+     @orders = current_customer.orders.all
   end
 
   def show
@@ -68,3 +69,6 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:postal_code, :address, :name, :shipping_price, :payment_method, :total_price, :status)
   end
 end
+
+
+

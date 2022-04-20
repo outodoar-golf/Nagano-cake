@@ -29,17 +29,16 @@ Rails.application.routes.draw do
     resources:cart_foods,only:[:create,:index,:update,:destroy]
     delete :cart_foods, to: 'cart_foods#destroy_all',as:"destroy_all"
     resources:foods,only:[:new,:create,:index,:show,:edit,:update]
+    resources:order_details,only:[:create]
+  resources :orders, only: [:new, :create, :index, :show] do
+        post :confirm, action: :confirm, on: :new
+        get "complete"
+    end
   end
 
 
   resources:addresses,only:[:new,:create,:edit,:update,:destroy]
-  resources:order_details,only:[:create]
-  resources :orders, only: [:new, :create, :index, :show] do
-      
-        post :confirm, action: :confirm, on: :new
-        get "complete"
-      
-    end
+
 
   get "searches/search",as:"search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

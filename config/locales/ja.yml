@@ -4,6 +4,19 @@ ja:
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+      status:
+        waiting_payment: "入金待ち"
+        payment_confirm: "入金確認"
+        making: "製作中"
+        before_sent: "発送準備中"
+        sent: "発送済み"
+    order_detail:
+      product_status:
+        not_make: "着手不可"
+        wait: "製作待ち"
+        making: "制作中"
+        done: "製作完了"
+
     activerecord:
       errors:
         models:
@@ -39,16 +52,6 @@ ja:
         name: 名前
        cart_food:
         quantity: 個数
-    order:
-       status:
-        waiting_payment: "入金待ち"
-        payment_confirm: "入金確認"
-        making: "製作中"
-        before_sent: "発送準備中"
-        sent: "発送済み"
-    order_detail:
-       product_status:
-        not_make: "着手不可"
-        wait: "製作待ち"
-        making: "制作中"
-        done: "製作完了"
+     
+       
+      

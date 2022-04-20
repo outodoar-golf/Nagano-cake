@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <th>ステータス</th>
-          <td><%= @order.status %></td>
+          <td><%= @order.status_i18n %></td>
         </tr>
         </table>
     </div>
@@ -56,10 +56,10 @@
    <tbody>
      <% @order.order_details.each do |order_detail|  %>
    <tr>
-    <td><%= order_detail.item.name %></td>
+    <td><%= order_detail.food.name %></td>
     <td><%= order_detail.price %></td>
-    <td><%= order_detail.amount %></td>
-    <td><%= (order_detail.price*order_detail.amount).floor %></td>
+    <td><%= order_detail.quantity %></td>
+    <td><%= (order_detail.price*order_detail.quantity).floor %></td>
    </tr>
    <% end %>
    </tbody>
