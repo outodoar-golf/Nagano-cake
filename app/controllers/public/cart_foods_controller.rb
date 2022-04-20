@@ -1,4 +1,4 @@
-class CartFoodsController < ApplicationController
+class Public::CartFoodsController < ApplicationController
   before_action :move_to_signed_in
 
   def create
@@ -6,10 +6,10 @@ class CartFoodsController < ApplicationController
     @cart_food = CartFood.new(cart_food_params)
     @cart_food.customer_id = current_customer.id
     if @cart_food.save
-      redirect_to cart_foods_path, notice:'カート追加しました'
+      redirect_to public_cart_foods_path, notice:'カート追加しました'
     else
       @genres = Genre.all
-      render template: "foods/show"
+      render "public/foods/show"
     end
   end
 
@@ -21,18 +21,18 @@ class CartFoodsController < ApplicationController
   def update
     cart_food = CartFood.find(params[:id])
     cart_food.update(cart_food_params)
-    redirect_to cart_foods_path
+    redirect_to public_cart_foods_path
   end
 
   def destroy
     cart_food = CartFood.find(params[:id])
     cart_food.destroy
-    redirect_to cart_foods_path,notice:'カートから削除しました'
+    redirect_to public_cart_foods_path,notice:'カートから削除しました'
   end
 
   def destroy_all
     current_customer.cart_foods.destroy_all
-    redirect_to cart_foods_path,notice:'カート全削除しました'
+    redirect_to public_cart_foods_path,notice:'カート全削除しました'
   end
 
 

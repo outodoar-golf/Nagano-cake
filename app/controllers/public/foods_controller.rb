@@ -1,4 +1,4 @@
-class FoodsController < ApplicationController
+class Public::FoodsController < ApplicationController
   def index
     @foods = Food.where(sale_status: true)
     @genres = Genre.all
