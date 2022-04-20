@@ -1,2 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+.d-flex::after {
+display: block;
+content:"";
+width: 300px;
+}
+
+
