@@ -1,3 +1,5 @@
+<div class="container">
+  <h1>会員情報編集</h1>
 <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
 
    <div class="field">
@@ -31,7 +33,7 @@
 
   <div class="actions">
     <%= f.submit "edit" %>
-  <div class="actions">  
+  <div class="actions">
   <%= form_with(model: @customer, local: true) do |form| %>
   <%= form.radio_button :is_deleted, :true %>
   <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
