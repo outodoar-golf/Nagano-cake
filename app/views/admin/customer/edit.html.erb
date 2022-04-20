@@ -1,22 +1,17 @@
 <div class="container">
   <h1>会員情報編集</h1>
+  <P>会員ID<%= @customer.id %></P>
 <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
 
-   <div class="field">
-    <%= f.label :first_name %><br />
+  <div>
+    氏名
     <%= f.text_field :first_name %>
+ 　　<%= f.text_field :last_name %>
   </div>
-   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-   <div class="field">
-    <%= f.label :first_name_kana %><br />
+  <div> 
+    フリガナ
     <%= f.text_field :first_name_kana %>
-  </div>
-   <div class="field">
-    <%= f.label :last_name_kana %><br />
-    <%= f.text_field :last_name_kana %>
+ 　　<%= f.text_field :last_name_kana %>
   </div>
    <div class="field">
     <%= f.label :postal_code %><br />
