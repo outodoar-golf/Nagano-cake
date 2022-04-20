@@ -20,7 +20,11 @@
       </td>
       <td><%= food.price %></td>
       <td><%= food.genre.name %></td>
-      <td><%= food.get_status(food.sale_status) %></td>
+      <% if food.get_status(food.sale_status) == "販売中" %>
+        <td class="text-success font-weight-bold"><%= food.get_status(food.sale_status) %></td>
+      <% else %>
+        <td class="text-secondary font-weight-bold"><%= food.get_status(food.sale_status) %></td>
+      <% end %>
     </tr>
     <% end %>
   </table>

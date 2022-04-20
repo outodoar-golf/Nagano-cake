@@ -1,24 +1,13 @@
 <div class="container">
-  <table class="table">
-    <tr>
-     <td>
-       <%= @customer.first_name %>
-       <%= @customer.last_name %>
-       <%= @customer.first_name_kana %>
-       <%= @customer.last_name_kana %>
-       <%= @customer.postal_code %>
-       <%= @customer.telephone_number %>
-       <%= @customer.address %>
-       <%= link_to "プロフィール編集", edit_customer_path(current_customer.id) %>
-     </td>
-     <td>
-       <%= link_to "注文一覧",orders_path %>
-       <p>住所一覧</p>
-       
-        <%= link_to "退会", customer_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-       
-     </td>
-    </tr>
-  </table>
-
+ <h1>会員詳細</h1>
+       <p><%= link_to "プロフィール編集", edit_customer_path(@customer.id) %></p>
+       <p><%= @customer.first_name %></p>
+       <p><%= @customer.last_name %></p>
+       <p><%= @customer.first_name_kana %></p>
+       <p><%= @customer.last_name_kana %></p>
+       <p><%= @customer.postal_code %></p>
+       <p><%= @customer.telephone_number %></p>
+       <p><%= @customer.address %></p>
+       <p><%= link_to "注文履歴一覧",orders_path %></p>
+       <p><%= link_to "配送先一覧",new_address_path %></p>
 </div>

@@ -24,7 +24,9 @@
                     <% end %>
                  </li>
                  <li>
+                    <%= link_to admin_customer_index_path do %>
                       会員一覧
+                    <% end %>
                  </li>
                  <li>
                       注文履歴一覧
@@ -56,7 +58,9 @@
                 <li>
               <% else %>
                 <li>
+                  <%= link_to new_customer_registration_path do %>
                    新規登録
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to new_customer_session_path do %>
