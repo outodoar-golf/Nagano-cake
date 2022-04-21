@@ -8,5 +8,5 @@
   <p>電話番号<%= @customer.telephone_number %></p>
   <p>メールアドレス<%= @customer.email %></p>
   <p>会員ステータス<%= @customer.is_deleted %></p>
-  <p><%= link_to "編集", edit_admin_customer_path(@customer.id) %><%= link_to "注文履歴一覧をみる",admin_orders_path %></p>
+  <p><%= link_to "編集", edit_admin_customer_path(@customer.id),class: "btn btn-success" %><%= link_to "注文履歴一覧をみる",admin_orders_path,class: "btn btn-primary" %></p>
 </div>
