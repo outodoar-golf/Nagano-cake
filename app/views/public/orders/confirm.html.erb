@@ -1,6 +1,5 @@
-<div class="row offset-">
-  <h2>注文情報確認</h2>
-</div>
+
+<h4 class="m-5 w-25 bg-light text-center">注文情報確認</h4>
 
 
 <div class="container">
@@ -51,8 +50,7 @@
   </div>
   <div class="row">
   <h3>お届け先</h3>　〒<%= @order.postal_code %><%= @order.address %><%= @order.name %>
-  </div>
-    <%= form_with model:@order, url: public_orders_path, local:true do |f| %>
+  <%= form_with model:@order, url: public_orders_path, local:true do |f| %>
     <%= f.hidden_field :payment_method ,:value => @order.payment_method %>
     <%= f.hidden_field :shipping_price ,:value => @order.shipping_price %>
     <%= f.hidden_field :address,:value => @order.address %>
@@ -61,4 +59,5 @@
     <%= f.hidden_field :total_price ,:value => @order.total_price %>
     <%= f.submit "注文を確定する", data: { confirm: '注文を確定しますか？' }, class:"btn btn-success" %>
     <% end %>
+  </div>
 </div>

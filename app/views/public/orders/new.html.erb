@@ -1,4 +1,4 @@
-<h1 class="text-center">注文情報入力</h1>
+<h4 class="m-5 w-25 bg-light text-center">注文情報入力</h4>
 
 <div class="mx-auto w-50 border rounded bg-white p-3">
 <%= form_with model: @new_order, url: confirm_new_public_order_path, local: true, method: :post do |f| %>
@@ -18,7 +18,8 @@
    <div class="form-group">
     <%=f.radio_button :address_option, 0 %>
     <%=f.label :address_option, "ご自身の住所" %>
-    〒<%= current_customer.postal_code %><%= current_customer.address %>
+    〒<%= current_customer.postal_code %></br>
+    <%= current_customer.address %><br>
     <%= current_customer.last_name%><%= current_customer.first_name %>
   </div>
 
