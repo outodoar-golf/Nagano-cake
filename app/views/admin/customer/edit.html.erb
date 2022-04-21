@@ -1,22 +1,17 @@
 <div class="container">
   <h1>会員情報編集</h1>
+  <P>会員ID<%= @customer.id %></P>
 <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
 
-   <div class="field">
-    <%= f.label :first_name %><br />
+  <div>
+    氏名
     <%= f.text_field :first_name %>
+ 　　<%= f.text_field :last_name %>
   </div>
-   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-   <div class="field">
-    <%= f.label :first_name_kana %><br />
+  <div> 
+    フリガナ
     <%= f.text_field :first_name_kana %>
-  </div>
-   <div class="field">
-    <%= f.label :last_name_kana %><br />
-    <%= f.text_field :last_name_kana %>
+ 　　<%= f.text_field :last_name_kana %>
   </div>
    <div class="field">
     <%= f.label :postal_code %><br />
@@ -30,10 +25,7 @@
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "edit" %>
-  </div>  
+  
   <div class="actions">
   <%= form_with(model: @customer, local: true) do |form| %>
   <%= form.radio_button :is_deleted, :true %>
@@ -41,6 +33,10 @@
   <%= form.radio_button :is_deleted, :false %>
   <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
   </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存",class: "btn btn-success" %>
+  </div>  
   <% end %>
 <% end %>
 </div>

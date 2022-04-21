@@ -2,19 +2,36 @@
 <div class="container">
  <h1>商品詳細</h1>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-4">
       <%= image_tag @food.image,size: '300x200' %>
     </div>
     <div class="col">
-      <p>商品名　　　　　　　　<%= @food.name %></p>
-      <p>商品説明　　　　　　　<%= @food.explanation %></p>
-      <p>ジャンル　　　　　　　<%= @food.genre.name %></p>
-      <p>税込価格(税抜価格)　　<%= @food.with_tax_price %>(<%= @food.price %>)円</p>
-      <% if @food.get_status(@food.sale_status) == "販売中" %>
-        <p>販売ステータス　　　　<span class="text-success font-weight-bold"><%= @food.get_status(@food.sale_status) %></span></p>
-      <% else %>
-        <p>販売ステータス　　　　<span class="text-secondary font-weight-bold"><%= @food.get_status(@food.sale_status) %></span></p>
-      <% end %>
+      <table>
+        <tr>
+          <td>商品名</td>
+          <td><%= @food.name %></td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @food.explanation %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @food.genre.name %></td>
+        </tr>
+        <tr>
+          <td>税込価格(税抜価格)</td>
+          <td><%= @food.with_tax_price %>(<%= @food.price %>)円</td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <% if @food.get_status(@food.sale_status) == "販売中" %>
+            <td class="text-success font-weight-bold"><%= @food.get_status(@food.sale_status) %></td>
+          <% else %>
+            <td class="text-secondary font-weight-bold"><%= @food.get_status(@food.sale_status) %></td>
+          <% end %>
+        </tr>
+      </table>
       <%= link_to"編集する",edit_admin_food_path(@food.id),class:"btn btn-success" %>
     </div>
   </div>

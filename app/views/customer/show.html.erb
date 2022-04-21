@@ -1,13 +1,14 @@
 <div class="container">
  <h1>会員詳細</h1>
-       <p><%= link_to "プロフィール編集", edit_customer_path(@customer.id) %></p>
-       <p><%= @customer.first_name %></p>
-       <p><%= @customer.last_name %></p>
-       <p><%= @customer.first_name_kana %></p>
-       <p><%= @customer.last_name_kana %></p>
-       <p><%= @customer.postal_code %></p>
-       <p><%= @customer.telephone_number %></p>
-       <p><%= @customer.address %></p>
-       <p><%= link_to "注文履歴一覧",public_orders_path %></p>
-       <p><%= link_to "配送先一覧",new_address_path %></p>
+
+       <p><%= link_to "編集する", edit_customer_path(@customer.id),class: "btn btn-success" %></p>
+       <p>氏名<%= @customer.first_name %><%= @customer.last_name %></p>
+       <p>フリガナ<%= @customer.first_name_kana %><%= @customer.last_name_kana %></p>
+       <p>郵便番号<%= @customer.postal_code %></p>
+       <p>電話番号<%= @customer.telephone_number %></p>
+       <p>住所<%= @customer.address %></p>
+       <p>メールアドレス<%= @customer.email %></p>
+       <p><%= link_to "注文履歴一覧",public_orders_path,class: "btn btn-primary" %></p>
+       <p><%= link_to "配送先一覧",new_address_path,class: "btn btn-primary" %></p>
+
 </div>

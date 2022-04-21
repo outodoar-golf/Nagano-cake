@@ -2,20 +2,14 @@
   <h1>会員情報編集</h1>
  <%= form_with model: @customer do |f| %>
 
-   <div class="field">
-    <%= f.label :first_name %><br />
+   <div>
+    氏名
     <%= f.text_field :first_name %>
-  </div>
-   <div class="field">
-    <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-   <div class="field">
-    <%= f.label :first_name_kana %><br />
+   <div>
+    フリガナ
     <%= f.text_field :first_name_kana %>
-  </div>
-   <div class="field">
-    <%= f.label :last_name_kana %><br />
     <%= f.text_field :last_name_kana %>
   </div>
    <div class="field">
@@ -32,8 +26,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "edit" %>
-  </div>
-  <p><%= link_to "退会",unsubscribe_path, class: "btn btn-outline-danger" %></p>
+    <%= f.submit "edit",class: "btn btn-outline-success" %>
+  　<%= link_to "退会",unsubscribe_path, class: "btn btn-danger" %>
+  </div>　
 <% end %>
 </div>

@@ -9,8 +9,11 @@
     </tr>
           <% @customer.each do |customer| %>
     <tr>
-      <td>id</td>
-      <td><%= link_to customer.first_name,admin_customer_path(customer.id) %></td>
+      <td><%= customer.id %></td>
+      <td><%= link_to admin_customer_path(customer.id) do%>
+          <%= customer.first_name %> <%=customer.last_name %>
+          <% end %>
+      </td>
       <td><%= customer.email %></td>
       <td><%= customer.is_deleted %></td>
           <% end %>
