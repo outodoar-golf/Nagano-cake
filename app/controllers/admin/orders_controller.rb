@@ -7,8 +7,13 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @orders = Order.all
-    @order_details = OrderDetail.where(order_id: @order)
+    @order_details = @order.order_details
+    @sum = 0
+    @order_details.each do |order_detail|
+      @sum += order_detail.subtotal
+    end
+    @shipping_price = 800
+    @total_price = @sum + @shipping_price
   end
 
   def create

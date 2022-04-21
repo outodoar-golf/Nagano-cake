@@ -14,14 +14,17 @@
     </tr>
   </thead>
   <tbody>
+
     <% @orders.each do |order| %>
+    <% @total = 0 %>
     <tr>
-     <td><%= order.created_at.strftime("%Y/%m/%d %-H:%-M:%-S") %></td>
+     <td><%= link_to order.created_at.strftime("%Y/%m/%d %-H:%-M:%-S"), admin_order_path(order) %></td>
      <td><%= order.full_name %></td>
-     <% @order_details.each do |order_detail| %>
-     <td><%= order_detail.quantity %></td>
+     <% order.order_details.each do |order_detail| %>
+      <% @total += order_detail.quantity %>
      <% end %>
-     <td><%= order.status %></td>
+     <td><%= @total %></td>
+     <td><%= order.status_i18n %></td>
     </tr>
     <% end %>
   </tbody>

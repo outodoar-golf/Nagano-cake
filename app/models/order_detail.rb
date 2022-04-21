@@ -9,4 +9,8 @@ class OrderDetail < ApplicationRecord
   def add_tax_price
     (self.tital_price * 1.08).round
   end
+
+  def subtotal
+    (food.with_tax_price * quantity)
+  end
 end

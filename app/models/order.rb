@@ -3,8 +3,15 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_one_attached :image
 
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :payment_method, presence: true
+  validates :shipping_price, presence: true
+  validates :total_price, presence: true
+
   def full_name
-    customer.first_name + customer.last_name
+    customer.last_name + customer.first_name
   end
 
   enum payment_method: { credit_card: 0, transfer: 1}
@@ -14,4 +21,6 @@ class Order < ApplicationRecord
   def add_tax_price
     (self.tital_price * 1.08).round
   end
+
+
 end
