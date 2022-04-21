@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   get 'homes/about',as: 'about'
 
   resources :customer, only: [:show, :edit, :update]
-  get '/customer/:id/unsubscribe' => 'customer#unsubscribe', as: 'unsubscribe'
-  patch '/customer/:id/withdrawal' => 'customer#withdrawal', as: 'withdrawal'
+  put "/customer/:id/hide" => "customer#hide", as: 'customer_hide'
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
