@@ -25,10 +25,7 @@
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "edit" %>
-  </div>  
+  
   <div class="actions">
   <%= form_with(model: @customer, local: true) do |form| %>
   <%= form.radio_button :is_deleted, :true %>
@@ -36,6 +33,10 @@
   <%= form.radio_button :is_deleted, :false %>
   <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
   </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存",class: "btn btn-success" %>
+  </div>  
   <% end %>
 <% end %>
 </div>
