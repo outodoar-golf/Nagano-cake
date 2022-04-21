@@ -1,42 +1,47 @@
 <div class="container">
-  <h1>会員情報編集</h1>
-  <P>会員ID<%= @customer.id %></P>
-<%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
+  <h1><%= @customer.first_name %><%= @customer.last_name %>の会員情報編集</h1>
+   <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
+   <table class= "table">
+        <tr>
+         <td>会員ID</td>
+         <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+         <td>氏名</td>
+         <td><%= f.text_field :first_name %></td>
+         <td><%= f.text_field :last_name %></td>
+        </tr>
+        <tr>
+         <td>フリガナ</td>
+         <td><%= f.text_field :first_name_kana %></td>
+         <td><%= f.text_field :last_name_kana %></td>
+        </tr>
+        <tr>
+         <td>郵便番号</td>
+         <td><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+         <td>電話番号</td>
+         <td><%= f.text_field :telephone_number %></td>
+        </tr>
+        <tr>
+         <td>住所</td>
+         <td><%= f.text_field :address %></td>
+        </tr>
+         <td>会員ステータス</td>
+         <td>
+             <%= f.radio_button :is_deleted, :true %>
+             <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+         </td>
+         <td>
+             <%= f.radio_button :is_deleted, :false %>
+             <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+         </td>
+        </tr>
+        <tr>
+         <td><%= f.submit "変更を保存",class: "btn btn-success" %></td>
+        </tr>
 
-  <div>
-    氏名
-    <%= f.text_field :first_name %>
- 　　<%= f.text_field :last_name %>
-  </div>
-  <div> 
-    フリガナ
-    <%= f.text_field :first_name_kana %>
- 　　<%= f.text_field :last_name_kana %>
-  </div>
-   <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
-  </div>
-   <div class="field">
-    <%= f.label :telephone_number %><br />
-    <%= f.text_field :telephone_number %>
-  </div>
-   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  
-  <div class="actions">
-  <%= form_with(model: @customer, local: true) do |form| %>
-  <%= form.radio_button :is_deleted, :true %>
-  <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-  <%= form.radio_button :is_deleted, :false %>
-  <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "変更を保存",class: "btn btn-success" %>
-  </div>  
-  <% end %>
-<% end %>
+    </table>
+    <% end %>
 </div>
