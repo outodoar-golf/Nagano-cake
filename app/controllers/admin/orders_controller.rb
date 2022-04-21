@@ -1,12 +1,19 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-    @orders = OrderDetail.all
+    @orders = Order.all
     @order_details = OrderDetail.all
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @sum = 0
+    @order_details.each do |order_detail|
+      @sum += order_detail.subtotal
+    end
+    @shipping_price = 800
+    @total_price = @sum + @shipping_price
   end
 
   def create
