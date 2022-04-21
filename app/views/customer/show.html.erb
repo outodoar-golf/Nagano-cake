@@ -1,7 +1,7 @@
 <div class="container">
 
  <h1>マイページ</h1>
-   <table class="table"> 
+   <table class="table">
     <tr>
      <td>登録情報</td><td><%= link_to "編集する", edit_customer_path(@customer.id),class: "btn btn-success" %></td>
     </tr>
@@ -31,18 +31,18 @@
      <td>メールアドレス</td>
      <td><%= @customer.email %></td>
     </tr>
-    
+
    </table>
    <table class="table">
     <tr>
      <td>配送先</td>
-     <td><%= link_to "一覧を見る",public_orders_path,class: "btn btn-primary" %></td>
+     <td><%= link_to "一覧を見る",new_address_path,class: "btn btn-primary" %></td>
     </tr>
     <tr>
      <td>注文履歴</td>
-     <td><%= link_to "一覧を見る",orders_path,class: "btn btn-primary" %></td>
+     <td><%= link_to "一覧を見る",public_orders_path,class: "btn btn-primary" %></td>
     </tr>
    </table>
-       
+
 </div>
 
