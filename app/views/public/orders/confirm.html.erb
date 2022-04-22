@@ -1,6 +1,5 @@
-<div class="row offset-">
-  <h2>注文情報確認</h2>
-</div>
+
+<h4 class="m-5 w-25 bg-light text-center">注文情報確認</h4>
 
 
 <div class="container">
@@ -18,7 +17,7 @@
         <tbody>
             <% @cart_foods.each do |cart_food| %>
           <tr>
-            <td><%= image_tag cart_food.food.image, size: '100x100' %><%= cart_food.food.name %></td>
+            <td><%= image_tag cart_food.food.image, size: '150x140' %><%= cart_food.food.name %></td>
             <td><%= cart_food.food.with_tax_price.to_s(:delimited) %>円</td>
             <td><%= cart_food.quantity %></td>
             <td><%= (cart_food.food.with_tax_price * cart_food.quantity).to_s(:delimited) %>円</td>
@@ -40,25 +39,28 @@
         </tr>
         <tr>
           <th scope="row">請求金額</th>
-          <td><%= (@sum + @order.shipping_price).to_s(:delimited) %>円</td>
+          <td><%= @sum.to_s(:delimited) %>円</td>
         </tr>
       </tbody>
     </table>
    </div>
   </div>
-  <div class="row">
-  <h3>支払方法</h3>　<%= @order.payment_method_i18n %>
+  <div class="border border-secondary">
+  <h3>支払方法</h3>
+  <p><%= @order.payment_method_i18n %></p>
+  </div></br>
+  <div class="border border-secondary">
+  <h3>お届け先</h3>
+  <p>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></p>
   </div>
-  <div class="row">
-  <h3>お届け先</h3>　〒<%= @order.postal_code %><%= @order.address %><%= @order.name %>
-  </div>
-    <%= form_with model:@order, url: public_orders_path, local:true do |f| %>
+  <%= form_with model:@order, url: public_orders_path, local:true do |f| %>
     <%= f.hidden_field :payment_method ,:value => @order.payment_method %>
     <%= f.hidden_field :shipping_price ,:value => @order.shipping_price %>
     <%= f.hidden_field :address,:value => @order.address %>
     <%= f.hidden_field :postal_code,:value => @order.postal_code %>
     <%= f.hidden_field :name,:value => @order.name %>
-    <%= f.hidden_field :total_price ,:value => @order.total_price %>
+    <%= f.hidden_field :total_price ,:value => @sum %>
     <%= f.submit "注文を確定する", data: { confirm: '注文を確定しますか？' }, class:"btn btn-success" %>
     <% end %>
+
 </div>
