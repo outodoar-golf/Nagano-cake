@@ -10,8 +10,7 @@
    <div class="col-lg-8">
     <table class="table table-borderless">
         <tr>
-         <td>登録情報</td>
-         <td><%= link_to "編集する", edit_customer_path(@customer.id),class: "btn btn-success" %></td>
+         <td>登録情報<%= link_to "編集する", edit_customer_path(@customer.id),class: "btn btn-success" %></td>
         </tr>
     </table>
     <table class="table table-bordered">
@@ -39,16 +38,13 @@
          <td class= "bg-light">メールアドレス</td>
          <td class= "bg-white"><%= @customer.email %></td>
         </tr>
-
     </table>
     <table class="table table-borderless">
         <tr>
-         <td>配送先</td>
-         <td><%= link_to "一覧を見る",new_address_path,class: "btn btn-primary" %></td>
+         <td>配送先<%= link_to "一覧を見る",new_address_path,class: "btn btn-primary" %></td>
         </tr>
         <tr>
-         <td>注文履歴</td>
-         <td><%= link_to "一覧を見る",public_orders_path,class: "btn btn-primary" %></td>
+         <td>注文履歴<%= link_to "一覧を見る",public_orders_path,class: "btn btn-primary" %></td>
         </tr>
     </table>
    </div>
