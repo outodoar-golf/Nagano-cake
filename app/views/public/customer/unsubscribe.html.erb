@@ -22,8 +22,8 @@
   <div class="col-lg-6">
    <table class = "table table-borderless">
    <tr>
-     <td><%= link_to "退会する", withdrawal_path,class: "btn btn-danger", method: :patch, data: { confilm: "本当に退会しますか？" } %>
-         <%= link_to "退会しない", edit_customer_path,class: "btn btn-primary" %>
+     <td><%= link_to "退会する", public_withdrawal_path,class: "btn btn-danger", method: :patch, data: { confilm: "本当に退会しますか？" } %>
+         <%= link_to "退会しない", edit_public_customer_path,class: "btn btn-primary" %>
      </td>
     </tr>
     </table>
