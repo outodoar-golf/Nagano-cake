@@ -1,6 +1,6 @@
 <!--管理者側-->
 <div class="container">
-  <h1>商品一覧</h1>
+  <h1>商品<i class="fa-solid fa-1"></i>一覧</h1>
   <%= link_to"font_awesome(商品投稿)",new_admin_food_path %>
   <table class="table">
     <tr>
@@ -28,4 +28,5 @@
     </tr>
     <% end %>
   </table>
+  <div class='p-top__paginate'><%= paginate @foods %></div>
 </div>
