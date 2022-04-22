@@ -1,7 +1,15 @@
 <div class="container">
-  <h1><%= @customer.first_name %><%= @customer.last_name %>の会員情報編集</h1>
-   <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
-   <table class= "table">
+  <div class= "row">
+   <div class= "col-lg-1"></div>
+   <div class= "col-lg-4">
+    <h3 class="bg-light"><%= @customer.first_name %><%= @customer.last_name %>の会員情報編集</h1>
+   </div>
+  </div>
+   <div class= "row">
+   <div class="col-lg-1"></div>
+   <div class="col-lg-11">
+    <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
+    <table class= "table table-borderless">
         <tr>
          <td>会員ID</td>
          <td><%= @customer.id %></td>
@@ -34,15 +42,17 @@
          <td>
              <%= f.radio_button :is_deleted, :true %>
              <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
- 
+
              <%= f.radio_button :is_deleted, :false %>
              <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
          </td>
         </tr>
         <tr>
+         <td></td>
          <td><%= f.submit "変更を保存",class: "btn btn-success" %></td>
         </tr>
-
     </table>
     <% end %>
+   </div>
+  </div>
 </div>
