@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
           @order.name = @customer.last_name + @customer.first_name
           @order.total_price = @sum
         elsif params[:order][:address_option] == "1"
-          address = Address.find(params[:order][:address])
+          address = Address.find(params[:order][:address_form])
           @order.postal_code = address.postal_code
           @order.address = address.address
           @order.name = address.name
