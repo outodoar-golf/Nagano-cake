@@ -1,4 +1,4 @@
-class CustomerController < ApplicationController
+class Public::CustomerController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
   end
@@ -9,9 +9,9 @@ class CustomerController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
-    redirect_to customer_path(@customer.id)
+    redirect_to public_customer_path(@customer.id)
   end
-  
+
   def withdrawal
     @customer = Customer.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
@@ -19,8 +19,8 @@ class CustomerController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to top_path
-  end  
-  
+  end
+
   private
 
   def customer_params

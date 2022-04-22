@@ -15,7 +15,7 @@ class Admin::FoodsController < ApplicationController
   end
 
   def index
-    @foods = Food.all
+    @foods = Food.all.page(params[:page]).per(10)
   end
 
   def show

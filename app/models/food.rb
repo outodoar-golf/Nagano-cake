@@ -11,7 +11,7 @@ class Food < ApplicationRecord
 
   # ステータスが販売中か販売中しか判別するメソッド
   def get_status(number)
-    if number == true
+    if number == false
       "販売中"
     else
       "販売停止中"

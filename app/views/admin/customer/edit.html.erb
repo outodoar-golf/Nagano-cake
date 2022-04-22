@@ -1,42 +1,58 @@
 <div class="container">
-  <h1>会員情報編集</h1>
-  <P>会員ID<%= @customer.id %></P>
-<%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
+  <div class= "row">
+   <div class= "col-lg-1"></div>
+   <div class= "col-lg-4">
+    <h3 class="bg-light"><%= @customer.first_name %><%= @customer.last_name %>の会員情報編集</h1>
+   </div>
+  </div>
+   <div class= "row">
+   <div class="col-lg-1"></div>
+   <div class="col-lg-11">
+    <%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
+    <table class= "table table-borderless">
+        <tr>
+         <td>会員ID</td>
+         <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+         <td>氏名</td>
+         <td><%= f.text_field :first_name %>
+             <%= f.text_field :last_name %>
+         </td>
+        </tr>
+        <tr>
+         <td>フリガナ</td>
+         <td><%= f.text_field :first_name_kana %>
+             <%= f.text_field :last_name_kana %>
+         </td>
+        </tr>
+        <tr>
+         <td>郵便番号</td>
+         <td><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+         <td>住所</td>
+         <td><%= f.text_field :address,size: 60 %></td>
+        </tr>
+        <tr>
+         <td>電話番号</td>
+         <td><%= f.text_field :telephone_number %></td>
+        </tr>
+         <td>会員ステータス</td>
+         <td>
+             <%= f.radio_button :is_deleted, :true %>
+             <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
 
-  <div>
-    氏名
-    <%= f.text_field :first_name %>
- 　　<%= f.text_field :last_name %>
+             <%= f.radio_button :is_deleted, :false %>
+             <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+         </td>
+        </tr>
+        <tr>
+         <td></td>
+         <td><%= f.submit "変更を保存",class: "btn btn-success" %></td>
+        </tr>
+    </table>
+    <% end %>
+   </div>
   </div>
-  <div> 
-    フリガナ
-    <%= f.text_field :first_name_kana %>
- 　　<%= f.text_field :last_name_kana %>
-  </div>
-   <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
-  </div>
-   <div class="field">
-    <%= f.label :telephone_number %><br />
-    <%= f.text_field :telephone_number %>
-  </div>
-   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  
-  <div class="actions">
-  <%= form_with(model: @customer, local: true) do |form| %>
-  <%= form.radio_button :is_deleted, :true %>
-  <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-  <%= form.radio_button :is_deleted, :false %>
-  <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "変更を保存",class: "btn btn-success" %>
-  </div>  
-  <% end %>
-<% end %>
 </div>
