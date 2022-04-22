@@ -4,7 +4,7 @@
    <h1>商品新規登録</h1>
    <%= form_with model: @food,url: admin_foods_path do |f| %>
     <div class="row">
-    <div class="col-4 offset-4">
+    <div class="col-4 mx-auto">
      <table class="table">
        <tr>
          <td style="width:300px">商品画像</td>
@@ -31,7 +31,7 @@
          <td><%= f.radio_button :sale_status,false %>販売中<%= f.radio_button :sale_status,true %><label>販売停止中</label></td>
        </tr>
        <tr>
-         <td><%= f.submit"新規登録" %></td>
+         <td><%= f.submit"新規登録",class:"btn btn-success" %></td>
        </tr>
      </table>
     </div>

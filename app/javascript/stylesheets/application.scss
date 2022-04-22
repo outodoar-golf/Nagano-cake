@@ -1,5 +1,6 @@
-@import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~bootstrap/scss/bootstrap';
+
 
 
 .d-flex::after {
@@ -13,3 +14,7 @@ width: 490px;
   margin:20px;
 }
 
+.icon{
+  float:right;
+   filter:drop-shadow(2px 2px 0px #000)
+}
