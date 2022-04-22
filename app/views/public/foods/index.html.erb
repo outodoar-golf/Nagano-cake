@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
-      <div class="border border-dark px-3">
+    <div class="col-md-3">
+      <div class="border border-dark px-3 text-center">
         <p>ジャンル検索</p>
         <% @genres.each do |genre| %>
           <p><%= genre.name %></p>
         <% end %>
       </div>
     </div>
-    <div class="col offset-md-1">
+    <div class="col">
       <h1>商品一覧<span>(全<%= @foods.count %>件)</span></h1>
       <div class="d-flex flex-wrap justify-content-between">
       <% @foods.each do |food| %>
