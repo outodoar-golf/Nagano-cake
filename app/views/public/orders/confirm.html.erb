@@ -17,7 +17,7 @@
         <tbody>
             <% @cart_foods.each do |cart_food| %>
           <tr>
-            <td><%= image_tag cart_food.food.image, size: '100x100' %><%= cart_food.food.name %></td>
+            <td><%= image_tag cart_food.food.image, size: '150x140' %><%= cart_food.food.name %></td>
             <td><%= cart_food.food.with_tax_price.to_s(:delimited) %>円</td>
             <td><%= cart_food.quantity %></td>
             <td><%= (cart_food.food.with_tax_price * cart_food.quantity).to_s(:delimited) %>円</td>
@@ -45,11 +45,14 @@
     </table>
    </div>
   </div>
-  <div class="row">
-  <h3>支払方法</h3>　<%= @order.payment_method_i18n %>
+  <div class="border border-secondary">
+  <h3>支払方法</h3>
+  <p><%= @order.payment_method_i18n %></p>
+  </div></br>
+  <div class="border border-secondary">
+  <h3>お届け先</h3>
+  <p>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></p>
   </div>
-  <div class="row">
-  <h3>お届け先</h3>　〒<%= @order.postal_code %><%= @order.address %><%= @order.name %>
   <%= form_with model:@order, url: public_orders_path, local:true do |f| %>
     <%= f.hidden_field :payment_method ,:value => @order.payment_method %>
     <%= f.hidden_field :shipping_price ,:value => @order.shipping_price %>
@@ -59,5 +62,5 @@
     <%= f.hidden_field :total_price ,:value => @order.total_price %>
     <%= f.submit "注文を確定する", data: { confirm: '注文を確定しますか？' }, class:"btn btn-success" %>
     <% end %>
-  </div>
+
 </div>
