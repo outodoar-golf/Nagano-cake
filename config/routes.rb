@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
 
-  get 'homes/top',as:"top"
+  root to: 'homes#top'
   get 'homes/about',as: 'about'
   
   devise_for :customers,skip: [:passwords], controllers: {
@@ -28,17 +28,16 @@ Rails.application.routes.draw do
     delete :cart_foods, to: 'cart_foods#destroy_all',as:"destroy_all"
     resources:foods,only:[:new,:create,:index,:show,:edit,:update]
     resources:order_details,only:[:create]
-  resources :orders, only: [:new, :create, :index, :show] do
+    resources :orders, only: [:new, :create, :index, :show] do
         post :confirm, action: :confirm, on: :new
         get "complete"
     end
+
     resources :customer, only: [:show, :edit, :update]
     get '/customer/:id/unsubscribe' => 'customer#unsubscribe', as: 'unsubscribe'
     patch '/customer/:id/withdrawal' => 'customer#withdrawal', as: 'withdrawal'
     end
 
-
-  resources:addresses,only:[:new,:create,:edit,:update,:destroy]
 
 
   get "searches/search",as:"search"
