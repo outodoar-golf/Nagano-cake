@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'homes/about',as: 'about'
-  
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -36,7 +36,8 @@ Rails.application.routes.draw do
     resources :customer, only: [:show, :edit, :update]
     get '/customer/:id/unsubscribe' => 'customer#unsubscribe', as: 'unsubscribe'
     patch '/customer/:id/withdrawal' => 'customer#withdrawal', as: 'withdrawal'
-    end
+    resources:addresses,only:[:new,:create,:edit,:update,:destroy]
+  end
 
 
 
