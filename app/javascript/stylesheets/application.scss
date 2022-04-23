@@ -18,4 +18,15 @@ width: 490px;
   float:right;
    filter:drop-shadow(2px 2px 0px #000)
 }
+.main-container {
+  background-image: url("../../assets/images/top_image.jpg");
+  background-size:cover;
+  height: 400px;
+  p{
+    letter-spacing: 0.1em;
+    line-height: 2.5;
+    color:white;
+  }
+}
+
 

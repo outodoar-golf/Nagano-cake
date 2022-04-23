@@ -49,6 +49,7 @@ class Public::OrdersController < ApplicationController
        order_detail.order_id = @order.id
        order_detail.product_status = 0
        order_detail.save
+       current_customer.cart_foods.destroy_all
       end
        redirect_to public_order_complete_path(@order.id)
   end

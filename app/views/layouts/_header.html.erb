@@ -90,7 +90,14 @@
             </ul>
           </div>
         </nav>
-        <div class="text-right"><%= render "searches/form" %></div>
+        <div class="text-center">
+　　　  　<% if customer_signed_in? %>
+            ようこそ、<%= current_customer.last_name %>さん
+          <% end %>
+        </div>
+        <div class="text-right">
+          <%= render "searches/form" %>
+        </div>
       </div>
 
     </header>

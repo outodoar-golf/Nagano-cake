@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
  <%= render "layouts/errors", obj: @genre %>
  <h1>ジャンル編集</h1>
  <%= form_with model: @genre,url: admin_genre_path(@genre.id),method: :patch do |f| %>
