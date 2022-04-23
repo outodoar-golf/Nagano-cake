@@ -1,7 +1,9 @@
 <header class="shadow-sm">
      <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <%= image_tag 'cake.png', :size =>'120x120' %>
+        　<%= link_to root_path do %>
+            <%= image_tag 'cake.png', :size =>'120x120' %>
+          <% end %>
           <h1 style="color:maroon">Nagano Cake</h1>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +31,9 @@
                     <% end %>
                  </li>
                  <li>
+                    <%= link_to admin_orders_path,class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       注文履歴一覧
+                    <% end %>
                  </li>
                  <li>
                     <%= link_to new_admin_genre_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
@@ -58,7 +62,9 @@
                   <% end %>
                 </li>
                 <li>
-              <% else %>
+              <% end %>
+              <% unless customer_signed_in? || admin_signed_in? %>
+
                 <li>
                   <%= link_to new_customer_registration_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                    新規登録
@@ -70,11 +76,13 @@
                   <% end %>
                 </li>
               <% end %>
+              <% unless admin_signed_in? %>
                 <li>
                   <%= link_to public_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       商品一覧
                   <% end %>
                 </li>
+              <% end %>
             </ul>
             <ul class="navbar-nav mt-1">
               <li class="ml-auto">
