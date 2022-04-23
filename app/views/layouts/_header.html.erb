@@ -12,19 +12,19 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? && customer_signed_in? %>
                  <li>
-                   <%= link_to about_path do %>
+                   <%= link_to about_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                      About
                    <% end %>
                  </li>
               <% end %>
               <% if admin_signed_in? %>
                  <li>
-                    <%= link_to admin_foods_path do %>
+                    <%= link_to admin_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       商品一覧
                     <% end %>
                  </li>
                  <li>
-                    <%= link_to admin_customer_index_path do %>
+                    <%= link_to admin_customer_index_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       会員一覧
                     <% end %>
                  </li>
@@ -32,12 +32,12 @@
                       注文履歴一覧
                  </li>
                  <li>
-                    <%= link_to new_admin_genre_path do %>
+                    <%= link_to new_admin_genre_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       ジャンル一覧
                     <% end %>
                  </li>
                  <li>
-                   <%= link_to destroy_admin_session_path,method: :delete do %>
+                   <%= link_to destroy_admin_session_path,method: :delete, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       管理者ログアウト
                    <% end %>
                   </li>
@@ -45,33 +45,33 @@
 
               <% if customer_signed_in? %>
                 <li>
-                  <%= link_to"カート",public_cart_foods_path %>
+                  <%= link_to"カート",public_cart_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" %>
                 </li>
                 <li>
-                  <%= link_to public_customer_path(current_customer) do %>
+                  <%= link_to public_customer_path(current_customer), class: "mr-4 h5 font-weight-bold text-secondary" do %>
                    マイページ
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_customer_session_path,method: :delete do %>
+                  <%= link_to destroy_customer_session_path,method: :delete, class: "mr-4 h5 font-weight-bold text-secondary"  do %>
                       ログアウト
                   <% end %>
                 </li>
                 <li>
               <% else %>
                 <li>
-                  <%= link_to new_customer_registration_path do %>
+                  <%= link_to new_customer_registration_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                    新規登録
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_customer_session_path do %>
+                  <%= link_to new_customer_session_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       ログイン
                   <% end %>
                 </li>
               <% end %>
                 <li>
-                  <%= link_to public_foods_path do %>
+                  <%= link_to public_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       商品一覧
                   <% end %>
                 </li>
