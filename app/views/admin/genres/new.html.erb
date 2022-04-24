@@ -1,8 +1,15 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-5">
-      <%= render "layouts/errors",obj: @genre %>
+
+      <% flash.each do |message_type, messages| %>
+        <% messages.each do |message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      <% end %>
+
       <%= notice %>
+
       <h3 class="text-center mb-5 mt-5">ジャンル一覧・追加</h3>
       <%= form_with model: @genre,url: admin_genres_path do |f| %>
         ジャンル名　<%= f.text_field :name %>
