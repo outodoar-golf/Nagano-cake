@@ -1,5 +1,10 @@
 <div class="container">
  <div class= "row">
+  <% flash.each do |message_type, messages| %>
+      <% messages.each do |message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    <% end %>
   <div class= "col-lg-2"></div>
   <div class= "col-lg-3">
     <h3 class="bg-light">新規会員登録</h3>
