@@ -1,10 +1,16 @@
 <!--管理者側-->
 <div class="container">
-   <%= render "layouts/errors", obj: @food %>
    <h1>商品新規登録</h1>
    <%= form_with model: @food,url: admin_foods_path do |f| %>
     <div class="row">
     <div class="col-5 mx-auto">
+     
+    <% flash.each do |message_type, messages| %>
+      <% messages.each do |message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    <% end %>
+
      <table class="table">
        <tr>
          <td style="width:300px">商品画像</td>

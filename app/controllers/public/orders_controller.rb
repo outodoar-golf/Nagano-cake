@@ -22,11 +22,17 @@ class Public::OrdersController < ApplicationController
           @order.name = @customer.last_name + @customer.first_name
           @order.total_price = @sum
         elsif params[:order][:address_option] == "1"
-          address = Address.find(params[:order][:address_form])
-          @order.postal_code = address.postal_code
-          @order.address = address.address
-          @order.name = address.name
-          @order.total_price = @sum
+          @address = Address.find_by(id: params[:order][:address_form])
+
+          if @address == nil
+            flash[:danger] = ["登録先住所が選択されていません"]
+            redirect_to request.referer
+          else
+            @order.postal_code = @address.postal_code
+            @order.address = @address.address
+            @order.name = @address.name
+            @order.total_price = @sum
+          end
         elsif params[:order][:address_option] == "2"
           @order.postal_code = params[:order][:postal_code]
           @order.address = params[:order][:address]
@@ -39,19 +45,22 @@ class Public::OrdersController < ApplicationController
   def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-
-      @order.save
-      current_customer.cart_foods.each do |cart_food|
-       order_detail = OrderDetail.new
-       order_detail.food_id = cart_food.food_id
-       order_detail.quantity = cart_food.quantity
-       order_detail.price = cart_food.food.price
-       order_detail.order_id = @order.id
-       order_detail.product_status = 0
-       order_detail.save
-       current_customer.cart_foods.destroy_all
+      if @order.save
+         current_customer.cart_foods.each do |cart_food|
+           order_detail = OrderDetail.new
+           order_detail.food_id = cart_food.food_id
+           order_detail.quantity = cart_food.quantity
+           order_detail.price = cart_food.food.price
+           order_detail.order_id = @order.id
+           order_detail.product_status = 0
+           order_detail.save
+           current_customer.cart_foods.destroy_all
+         end
+         redirect_to public_order_complete_path(@order.id)
+      else
+          flash[:danger] = @order.errors.full_messages
+          redirect_to new_public_order_path
       end
-       redirect_to public_order_complete_path(@order.id)
   end
 
 

@@ -15,14 +15,14 @@
         <table class="table table-borderless">
          <tr>
           <td>名前</td>
-          <td>(姓)<%= f.text_field :first_name %>
-              (名)<%= f.text_field :last_name %>
+          <td><%= f.text_field :first_name %>
+              <%= f.text_field :last_name %>
           </td>
          </tr>
          <tr>
           <td>フリガナ</td>
-          <td>(セイ)<%= f.text_field :first_name_kana %>
-              (メイ)<%= f.text_field :last_name_kana %>
+          <td><%= f.text_field :first_name_kana %>
+              <%= f.text_field :last_name_kana %>
           </td>
          </tr>
          <tr>
@@ -64,11 +64,20 @@
      </div>
    </div>
    <div class= "row">
-            <div class= "col-lg-2"></div>
-            <div class= "col-lg-3">
-              <h3 class="bg-light">既に登録済みの方</h3>
-            </div>
-   </div>
 
-        <%= render "public/shared/links" %>からログイン
+    <table class="table table-borderless">
+     <tr>
+      <td class= "col-lg-2"></td>
+      <td class="col-lg-3">
+       <h3 class="bg-light">既に登録済みの方</h3>
+      </td>
+      <td class= "col-lg-8"></td>
+     </tr>
+     <tr>
+      <td class= "col-lg-2"></td>
+      <td class="col-lg-3"><%= render "public/shared/links" %>からログイン</td>
+      <td class= "col-lg-8"></td>
+     </tr>
+    </table>
+
 </div>
