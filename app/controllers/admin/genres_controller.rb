@@ -9,8 +9,8 @@ class Admin::GenresController < ApplicationController
      if @genre.save
        redirect_to  new_admin_genre_path,notice:'ジャンル追加しました'
      else
-       @genres = Genre.all
-       render "new"
+       flash[:danger] = @genre.errors.full_messages
+       redirect_to new_admin_genre_path
      end
   end
   def edit
@@ -21,7 +21,8 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to new_admin_genre_path,notice:'変更しました'
     else
-      render "edit"
+      flash[:danger] = @genre.errors.full_messages
+      redirect_to new_admin_genre_path
     end
   end
 

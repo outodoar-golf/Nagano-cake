@@ -41,6 +41,14 @@ ja:
             attributes:
               quantity:
                 blank: を選択してください
+          order:
+            attributes:
+              postal_code:
+                blank: が入力されていません
+              address:
+                blank: が入力されていません
+              name:
+                blank: が入力されていません
       attributes:
        food:
         name: 商品名
@@ -52,5 +60,9 @@ ja:
         name: 名前
        cart_food:
         quantity: 個数
+       order:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
 
 
