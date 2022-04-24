@@ -16,7 +16,6 @@ ja:
           wait: "製作待ち"
           making: "制作中"
           done: "製作完了"
-
     activerecord:
       errors:
         models:
@@ -64,5 +63,18 @@ ja:
         postal_code: 郵便番号
         address: 住所
         name: 宛名
+       customer:
+        email: メールアドレス
+        password: パスワード
+        first_name: 氏名(姓)
+        last_name: 氏名(名)
+        first_name_kana: 氏名(姓(カタカナ))
+        last_name_kana: 氏名(名(カタカナ))
+        postal_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+
+
+
 
 
