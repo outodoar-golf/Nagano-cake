@@ -9,10 +9,10 @@
  </div>
  <div class="row">
    <div class="col-lg-6"></div>
-     <table class="table table-borderless">
-       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="table table-borderless">
         <tr>
-          <td class="col-lg-2">メールアドレス</td>
+          <td>メールアドレス</td>
           <td><%= f.email_field :email, autofocus: true,size:50, autocomplete: "email" %></td>
         </tr>
         <tr>
@@ -23,13 +23,21 @@
           <td></td>
           <td><%= f.submit "ログイン",class:"btn btn-primary" %></td>
         </tr>
-       <% end %>
-     </table>
+      </table>
+     <% end %>
    </div>
-   <div class="row">
-   <div class="col-lg-2"></div>
-   <h6 class="bg-light">会員登録がお済みでない方</h6>
-        <%= render "public/shared/links" %>
-         から新規登録を行ってください
-  </div>
+  <table class="table table-borderless">
+     <tr>
+      <td class= "col-lg-2"></td>
+      <td class="col-lg-3">
+       <h6 class="bg-light">会員登録がお済みでない方</h6>
+      </td>
+      <td class= "col-lg-8"></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td><%= render "public/shared/links" %>から新規登録を行ってください</td>
+      <td></td>
+     </tr>
+    </table>
 </div>  

@@ -1,4 +1,11 @@
+<div class="container">
 <h4 class="m-5 w-25 bg-light text-center">注文情報入力</h4>
+
+ <% flash.each do |message_type, messages| %>
+     <% messages.each do |message| %>
+         <div class="alert alert-<%= message_type %>"><%= message %></div>
+     <% end %>
+ <% end %>
 
 <div style=>
 <%= form_with model: @new_order, url: confirm_new_public_order_path, local: true, method: :post do |f| %>
@@ -11,7 +18,7 @@
 
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
-    </div>
+  </div>
 
 
 
@@ -58,11 +65,7 @@
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
     </div>
   </div>
-
-  </div>
-
-  </div>
-
     <%= f.submit "購入確認へ", class:"btn btn-primary " %>
   <% end %>
+  </div>
   </div>
