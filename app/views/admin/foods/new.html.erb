@@ -31,7 +31,7 @@
        </tr>
        <tr>
          <td>ジャンル</td>
-         <td><%= f.select :genre_id,@genre.map{|genre|[genre.name,genre.id]},include_blank: "--選択してください--" %></td>
+         <td><%= f.select :genre_id,@genre.map{|genre|[genre.name,genre.id]},include_blank: "--選択してください--",size: "300" %></td>
        </tr>
        <tr>
          <td>税抜価格</td>
