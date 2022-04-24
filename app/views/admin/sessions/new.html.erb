@@ -12,7 +12,7 @@
     <table class="table table-borderless">
     <tr>
       <td>メールアドレス</td>
-      <td><%= f.email_field :email, autofocus: true, size: 50, autocomplete: "email" %></td>
+      <td><%= f.email_field :email, autofocus: true, size: 50, autocomplete: "email",placeholder:"example@mail.com" %></td>
     </tr>
 
       <tr>
@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><%= f.submit "Log in",class: "btn btn-primary" %></td>
+        <td><%= f.submit "ログイン",class: "btn btn-primary" %></td>
       </tr>
   </div>
     </table>
