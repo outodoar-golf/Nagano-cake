@@ -24,8 +24,8 @@
          <%= link_to public_food_path(food.id) do %>
            <%= image_tag food.image,size: '150x150' %>
          <% end %>
-           <p><%= food.name %></p>
-           <p>¥<%= food.price %></p>
+           <p class="text-center"><%= food.name %></p>
+           <p class="text-center">¥<%= food.price %></p>
         </div>
       <% end %>
       </div>
