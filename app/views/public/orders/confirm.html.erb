@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <th scope="row">商品合計</th>
-          <td><%= @sum %>円</td>
+          <td><%= @sum.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th scope="row">請求金額</th>
@@ -45,13 +45,14 @@
     </table>
    </div>
   </div>
-  <div class="border border-secondary">
+  <div class="">
   <h3>支払方法</h3>
   <p><%= @order.payment_method_i18n %></p>
   </div></br>
-  <div class="border border-secondary">
+  <div class="">
   <h3>お届け先</h3>
-  <p>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></p>
+  <p>〒<%= @order.postal_code %>  <%= @order.address %></p>
+  <p><%= @order.name %></p>
   </div>
   <%= form_with model:@order, url: public_orders_path, local:true do |f| %>
     <%= f.hidden_field :payment_method ,:value => @order.payment_method %>
