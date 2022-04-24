@@ -22,31 +22,31 @@
         <table class="table table-borderless">
          <tr>
           <td>名前</td>
-          <td><%= f.text_field :first_name %>
-              <%= f.text_field :last_name %>
+          <td><%= f.text_field :first_name,placeholder:"(姓)" %>
+              <%= f.text_field :last_name,placeholder:"(名)" %>
           </td>
          </tr>
          <tr>
           <td>フリガナ</td>
-          <td><%= f.text_field :first_name_kana %>
-              <%= f.text_field :last_name_kana %>
+          <td><%= f.text_field :first_name_kana,placeholder:"(セイ)" %>
+              <%= f.text_field :last_name_kana,placeholder:"(メイ)" %>
           </td>
          </tr>
          <tr>
           <td>メールアドレス</td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"example@mail.com" %></td>
          </tr>
          <tr>
           <td>郵便番号</td>
-          <td><%= f.text_field :postal_code %></td>
+          <td><%= f.text_field :postal_code,placeholder:"0000000" %></td>
          </tr>
          <tr>
           <td>住所</td>
-          <td><%= f.text_field :address,size: 60 %></td>
+          <td><%= f.text_field :address,size: 60,placeholder:"沖縄県那覇市" %></td>
          </tr>
          <tr>
           <td>電話番号</td>
-          <td><%= f.text_field :telephone_number %></td>
+          <td><%= f.text_field :telephone_number,placeholder:"00000000000" %></td>
          </tr>
          <tr>
           <td>パスワード（6文字以上）</td>
