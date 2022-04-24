@@ -64,7 +64,10 @@
                 <li>
               <% end %>
               <% unless customer_signed_in? || admin_signed_in? %>
-
+                 <li>
+                   <%= link_to about_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
+                     About
+                   <% end %>
                 <li>
                   <%= link_to new_customer_registration_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                    新規登録
