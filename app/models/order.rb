@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   validates :total_price, presence: true
 
   def full_name
-    customer.last_name + customer.first_name
+    customer.first_name + customer.last_name
   end
 
   enum payment_method: { credit_card: 0, transfer: 1}
