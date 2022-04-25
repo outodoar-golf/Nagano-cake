@@ -5,9 +5,11 @@
    <div class="col-4 mx-auto">
 
     <% flash.each do |message_type, messages| %>
+     <% if messages.class == Array %>
       <% messages.each do |message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
+     <% end %>
     <% end %>
 
     <%= form_with model: @food,url: admin_food_path(@food.id) do |f| %>
