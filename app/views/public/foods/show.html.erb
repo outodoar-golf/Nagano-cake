@@ -15,7 +15,7 @@
     <%= render "layouts/errors", obj: @cart_food %>
       <h1><%= @food.name %></h1>
       <p><%= @food.explanation %></p>
-      <p>¥<%= @food.price %>(税込)<br>
+      <p>¥<%= @food.with_tax_price %>(税込)<br>
       <%= form_with model: @cart_food,url: public_cart_foods_path,method: :post do |f| %>
         <%= f.select :quantity,*[1..10],include_blank: "個数選択" %>
         <%= f.hidden_field :food_id,:value=>@food.id %>
