@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources:genres,only:[:new,:create,:edit,:update]
     resources:orders,only:[:index,:show,:update]
     resources:order_details,only:[:update]
-    resources:customer,only:[:index,:show,:edit,:update]
+    resources:customers,only:[:index,:show,:edit,:update]
 
     get 'homes/top'
   end
@@ -32,12 +32,12 @@ Rails.application.routes.draw do
         post :confirm, action: :confirm, on: :new
         get "complete"
     end
-    get 'customer/mypage'=>'customer#show',as:"customer_mypage"
-    get 'customer/edit'=>'customer#edit'
-    patch '/customer'=>'customer#update'
+    get 'customers/mypage'=>'customers#show',as:"customer_mypage"
+    get 'customers/edit'=>'customers#edit'
+    patch '/customers'=>'customers#update'
 
-    get '/customer/unsubscribe' => 'customer#unsubscribe', as: 'unsubscribe'
-    patch '/customer/withdrawal' => 'customer#withdrawal', as: 'withdrawal'
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources:addresses,only:[:new,:create,:edit,:update,:destroy]
   end
 
