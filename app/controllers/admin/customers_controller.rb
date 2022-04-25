@@ -1,4 +1,4 @@
-class Admin::CustomerController < ApplicationController
+class Admin::CustomersController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
     @customer = Customer.page(params[:page]).per(10)
