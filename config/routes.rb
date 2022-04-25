@@ -32,10 +32,12 @@ Rails.application.routes.draw do
         post :confirm, action: :confirm, on: :new
         get "complete"
     end
+    get 'customer/mypage'=>'customer#show',as:"customer_mypage"
+    get 'customer/edit'=>'customer#edit'
+    patch '/customer'=>'customer#update'
 
-    resources :customer, only: [:show, :edit, :update]
-    get '/customer/:id/unsubscribe' => 'customer#unsubscribe', as: 'unsubscribe'
-    patch '/customer/:id/withdrawal' => 'customer#withdrawal', as: 'withdrawal'
+    get '/customer/unsubscribe' => 'customer#unsubscribe', as: 'unsubscribe'
+    patch '/customer/withdrawal' => 'customer#withdrawal', as: 'withdrawal'
     resources:addresses,only:[:new,:create,:edit,:update,:destroy]
   end
 

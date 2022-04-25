@@ -1,19 +1,19 @@
 class Public::CustomerController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(customer_params)
-    redirect_to public_customer_path(@customer.id)
+    redirect_to public_customer_mypage_path
   end
 
   def withdrawal
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
     reset_session
