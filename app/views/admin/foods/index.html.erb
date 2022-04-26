@@ -1,7 +1,11 @@
 <!--管理者側-->
-<div class="container">
+<div class="container mt-5">
   <h1>商品一覧</h1>
-  <%= link_to"font_awesome(商品投稿)",new_admin_food_path %>
+  <span class="icon">
+    <%= link_to new_admin_food_path do %>
+      <i class="fa-solid fa-circle-plus fa-3x"></i>
+    <% end %>
+  </span>
   <table class="table">
     <tr>
       <td>商品ID</td>
@@ -20,8 +24,13 @@
       </td>
       <td><%= food.price %></td>
       <td><%= food.genre.name %></td>
-      <td><%= food.get_status(food.sale_status) %></td>
+      <% if food.get_status(food.sale_status) == "販売中" %>
+        <td class="text-success font-weight-bold"><%= food.get_status(food.sale_status) %></td>
+      <% else %>
+        <td class="text-secondary font-weight-bold"><%= food.get_status(food.sale_status) %></td>
+      <% end %>
     </tr>
     <% end %>
   </table>
+  <div class='p-top__paginate'><%= paginate @foods %></div>
 </div>

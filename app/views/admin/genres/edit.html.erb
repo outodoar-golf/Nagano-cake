@@ -1,5 +1,10 @@
-<div class="container">
- <%= render "layouts/errors", obj: @genre %>
+<div class="container mt-5">
+ <% flash.each do |message_type, messages| %>
+   <% messages.each do |message| %>
+       <div class="alert alert-<%= message_type %>"><%= message %></div>
+   <% end %>
+ <% end %>
+
  <h1>ジャンル編集</h1>
  <%= form_with model: @genre,url: admin_genre_path(@genre.id),method: :patch do |f| %>
    ジャンル名<%= f.text_field :name %>

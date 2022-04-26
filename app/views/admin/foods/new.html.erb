@@ -1,14 +1,51 @@
 <!--管理者側-->
 <div class="container">
-   <%= render "layouts/errors", obj: @food %>
    <h1>商品新規登録</h1>
    <%= form_with model: @food,url: admin_foods_path do |f| %>
-     <label>商品画像</label><%= f.file_field :image,accept:"image_jpeg" %><br>
-     <label>商品名前</label><%= f.text_field :name,placeholder:"商品名" %><br>
-     <label>商品説明</label><%= f.text_area :explanation,rows: 5,placeholder:"ここに説明文を記述します" %><br>
-     <label>ジャンル</label><%= f.select :genre_id,@genre.map{|genre|[genre.name,genre.id]},include_blank: "--選択してください--" %><br>
-     <label>税抜価格</label><%= f.text_field :price %>円<br>
-     <label>販売ステータス</label><%= f.radio_button :sale_status,false %><label>販売中</label><%= f.radio_button :sale_status,true %>販売停止中<br>
-     <%= f.submit"新規登録" %>
+    <div class="row">
+    <div class="col-5 mx-auto">
+
+
+    <% flash.each do |message_type, messages| %>
+      <% if messages.class == Array %>
+       <% messages.each do |message| %>
+         <div class="alert alert-<%= message_type %>"><%= message %></div>
+       <% end %>
+      <% else %>
+       <div class="alert alert-<%= message_type %>"><%= messages %></div>
+      <% end %>
+    <% end %>
+
+     <table class="table">
+       <tr>
+         <td style="width:300px">商品画像</td>
+         <td><%= f.file_field :image,accept:"image_jpeg" %></td>
+       </tr>
+       <tr>
+         <td>商品名前</td>
+         <td><%= f.text_field :name,placeholder:"商品名",class:"form-control" %></td>
+       </tr>
+       <tr>
+         <td>商品説明</td>
+         <td><%= f.text_area :explanation,rows: 5,placeholder:"ここに説明文を記述します",class:"form-control"  %></td>
+       </tr>
+       <tr>
+         <td>ジャンル</td>
+         <td><%= f.select :genre_id,@genre.map{|genre|[genre.name,genre.id]},include_blank: "--選択してください--",size: "300" %></td>
+       </tr>
+       <tr>
+         <td>税抜価格</td>
+         <td><%= f.text_field :price,class:"form-control"  %>円</td>
+       </tr>
+       <tr>
+         <td>販売ステータス</td>
+         <td><%= f.radio_button :sale_status,false %>販売中<%= f.radio_button :sale_status,true %><label>販売停止中</label></td>
+       </tr>
+     </table>
+     <div class="text-center">
+        <%= f.submit"新規登録",class:"btn btn-success" %>
+       </div>
+    </div>
+    </div>
    <% end %>
  </div>

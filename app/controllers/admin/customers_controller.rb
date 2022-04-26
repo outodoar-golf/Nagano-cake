@@ -1,7 +1,7 @@
-class Admin::CustomerController < ApplicationController
+class Admin::CustomersController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
-    @customer = Customer.all
+    @customer = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -18,11 +18,12 @@ class Admin::CustomerController < ApplicationController
      else
        render "edit"
      end
+
   end
-  
+
    private
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :telephone_number, :address)
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :telephone_number, :address,:is_deleted)
   end
 end

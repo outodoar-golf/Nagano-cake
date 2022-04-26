@@ -1,8 +1,10 @@
 <header class="shadow-sm">
      <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-
-          <h1>Nagano Cake</h1>
+        　<%= link_to root_path do %>
+            <%= image_tag 'cake.png', :size =>'120x120' %>
+          <% end %>
+          <h1 style="color:maroon">Nagano Cake</h1>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,32 +14,34 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? && customer_signed_in? %>
                  <li>
-                   <%= link_to about_path do %>
+                   <%= link_to about_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                      About
                    <% end %>
                  </li>
               <% end %>
               <% if admin_signed_in? %>
                  <li>
-                    <%= link_to admin_foods_path do %>
+                    <%= link_to admin_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       商品一覧
                     <% end %>
                  </li>
                  <li>
-                    <%= link_to admin_customer_index_path do %>
+                    <%= link_to admin_customers_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       会員一覧
                     <% end %>
                  </li>
                  <li>
+                    <%= link_to admin_orders_path,class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       注文履歴一覧
+                    <% end %>
                  </li>
                  <li>
-                    <%= link_to new_admin_genre_path do %>
+                    <%= link_to new_admin_genre_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       ジャンル一覧
                     <% end %>
                  </li>
                  <li>
-                   <%= link_to destroy_admin_session_path,method: :delete do %>
+                   <%= link_to destroy_admin_session_path,method: :delete, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       管理者ログアウト
                    <% end %>
                   </li>
@@ -45,34 +49,43 @@
 
               <% if customer_signed_in? %>
                 <li>
-                  <%= link_to"カート",public_cart_foods_path %>
-
-
-                  </h3>
+                  <%= link_to"カート",public_cart_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" %>
                 </li>
                 <li>
-                  <%= link_to destroy_customer_session_path,method: :delete do %>
+                  <%= link_to public_customer_mypage_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
+                   マイページ
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_customer_session_path,method: :delete, class: "mr-4 h5 font-weight-bold text-secondary"  do %>
                       ログアウト
                   <% end %>
                 </li>
                 <li>
-              <% else %>
+              <% end %>
+              <% unless customer_signed_in? || admin_signed_in? %>
+                 <li>
+                   <%= link_to about_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
+                     About
+                   <% end %>
                 <li>
-                  <%= link_to new_customer_registration_path do %>
+                  <%= link_to new_customer_registration_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                    新規登録
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_customer_session_path do %>
+                  <%= link_to new_customer_session_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       ログイン
                   <% end %>
                 </li>
               <% end %>
+              <% unless admin_signed_in? %>
                 <li>
-                  <%= link_to public_foods_path do %>
+                  <%= link_to public_foods_path, class: "mr-4 h5 font-weight-bold text-secondary" do %>
                       商品一覧
                   <% end %>
                 </li>
+              <% end %>
             </ul>
             <ul class="navbar-nav mt-1">
               <li class="ml-auto">
@@ -80,7 +93,14 @@
             </ul>
           </div>
         </nav>
-        <div class="text-right"><%= render "searches/form" %></div>
+        <div class="text-center">
+　　　  　<% if customer_signed_in? %>
+            ようこそ、<%= current_customer.last_name %>さん
+          <% end %>
+        </div>
+        <div class="text-right">
+          <%= render "searches/form" %>
+        </div>
       </div>
 
     </header>

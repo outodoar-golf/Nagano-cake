@@ -1,21 +1,23 @@
 class Admin::FoodsController < ApplicationController
   def new
-    @food = Food.new
+    @food = Food.new(session[:foods] || {})
     @genre = Genre.all
   end
 
   def create
     @food = Food.new(food_params)
     if @food.save
+      session[:foods] = nil
       redirect_to admin_food_path(@food.id)
     else
-      @genre = Genre.all
-      render "new"
+      session[:foods] = @food.attributes.slice(*food_params.keys)
+      flash[:danger] = @food.errors.full_messages
+      redirect_to new_admin_food_path
     end
   end
 
   def index
-    @foods = Food.all
+    @foods = Food.all.page(params[:page]).per(10)
   end
 
   def show
@@ -39,8 +41,8 @@ class Admin::FoodsController < ApplicationController
       end
       redirect_to admin_food_path(@food.id)
     else
-      @genre = Genre.all
-      render "edit"
+      flash[:danger] = @food.errors.full_messages
+      redirect_to edit_admin_food_path(@food.id)
     end
   end
 

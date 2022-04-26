@@ -1,9 +1,9 @@
-<h1>注文履歴詳細</h1>
+<h4 class="m-5 w-25 bg-light text-center">注文履歴詳細</h4>
 
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <h5>注文情報</h5>
+      <h5 class="font-weight-bold">注文情報</h5>
       <table class="table table-bordered">
         <tr>
           <th>注文日</th>
@@ -19,12 +19,12 @@
         </tr>
         <tr>
           <th>ステータス</th>
-          <td><%= @order.status %></td>
+          <td><%= @order.status_i18n %></td>
         </tr>
         </table>
     </div>
     <div class="col-4">
-    <h5>請求情報</h5>
+    <h5 class="font-weight-bold">請求情報</h5>
     <table class="table table-bordered">
       <tbody>
         <tr>
@@ -43,7 +43,7 @@
     </table>
    </div>
    <div class="col-10">
-   <h5>注文内容</h5>
+   <h5 class="font-weight-bold">注文内容</h5>
    <table class="table table-bordered">
      <thead>
      <tr>
@@ -56,10 +56,10 @@
    <tbody>
      <% @order.order_details.each do |order_detail|  %>
    <tr>
-    <td><%= order_detail.item.name %></td>
-    <td><%= order_detail.price %></td>
-    <td><%= order_detail.amount %></td>
-    <td><%= (order_detail.price*order_detail.amount).floor %></td>
+    <td><%= order_detail.food.name %></td>
+    <td><%= order_detail.price.to_s(:delimited) %></td>
+    <td><%= order_detail.quantity %></td>
+    <td><%= (order_detail.price*order_detail.quantity).floor.to_s(:delimited) %></td>
    </tr>
    <% end %>
    </tbody>
