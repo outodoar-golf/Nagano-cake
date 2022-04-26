@@ -4,7 +4,10 @@
       <div class="border border-dark px-3 text-center">
         <p>ジャンル検索</p>
         <% @genres.each do |genre| %>
-          <p><%= genre.name %></p>
+          <p><%= link_to search_path(tag_name: genre.name) do %>
+              <%= genre.name %>
+             <% end %>
+          </p>
         <% end %>
       </div>
     </div>
